@@ -42,6 +42,7 @@ using FieldAPI.Data;
 using FieldAPI.Models;
 using System;
 using System.Threading.Tasks;
+using MongoDB.Driver;
 
 namespace FieldAPI.Controllers
 {
@@ -68,8 +69,7 @@ namespace FieldAPI.Controllers
                 }
 
                 // Save the form data to the database
-                await _context.Fields.InsertOneAsync(formData); // Use appropriate method provided by MongoDB driver
-                // Alternatively, you can use InsertManyAsync if you're inserting multiple documents
+                await _context.Forms.InsertOneAsync(formData);
 
                 return Ok("Form data saved successfully.");
             }
@@ -80,4 +80,6 @@ namespace FieldAPI.Controllers
         }
     }
 }
+
+
 

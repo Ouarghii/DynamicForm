@@ -1,21 +1,29 @@
-﻿    // FieldDbContext.cs
-    using MongoDB.Driver;
-    using FieldAPI.Models;
-using Microsoft.EntityFrameworkCore;
+﻿// FieldDbContext.cs
+using MongoDB.Driver;
+using FieldAPI.Models;
 
-    namespace FieldAPI.Data
+namespace FieldAPI.Data
+{
+    public class FieldDbContext
     {
-        public class FieldDbContext
+        private readonly IMongoDatabase _database;
+
+        // Define a property for the Fields collection
+        public IMongoCollection<Field> Fields { get; }
+
+        // Define a property for the Forms collection
+        public IMongoCollection<FormModel> Forms { get; }
+
+        public FieldDbContext()
         {
-            private readonly IMongoDatabase _database;
+            var client = new MongoClient("mongodb://localhost:27017");
+            _database = client.GetDatabase("Formdynamic"); // Use the name of your database
 
-            public FieldDbContext()
-            {
-                var client = new MongoClient("mongodb://localhost:27017");
-                _database = client.GetDatabase("Formdynamic"); // Use the name of your database
-            }
+            // Initialize the Fields collection
+            Fields = _database.GetCollection<Field>("Fields");
 
-            public IMongoCollection<Field> Fields => _database.GetCollection<Field>("Formdynamic"); // Use the name of your collection
-        public DbSet<FormModel> FormModels { get; set; }
+            // Initialize the Forms collection
+            Forms = _database.GetCollection<FormModel>("Forms");
+        }
     }
-    }
+}
