@@ -1,0 +1,34 @@
+[
+  {
+    "Id": 3,
+    "FieldName": "Email",
+    "Type": "string",
+    "Description": "your identify input",
+    "Required": true,
+    "FormData": ""
+  },
+  {
+    "Id": 4,
+    "FieldName": "Username",
+    "Type": "String",
+    "Description": "hello ",
+    "Required": true,
+    "FormData": ""
+  },
+  {
+    "Id": 2002,
+    "FieldName": "phone number",
+    "Type": "number",
+    "Description": "",
+    "Required": true,
+    "FormData": ""
+  },
+  {
+    "Id": 3002,
+    "FieldName": "ahmed",
+    "Type": "number",
+    "Description": "",
+    "Required": false,
+    "FormData": ""
+  }
+]
